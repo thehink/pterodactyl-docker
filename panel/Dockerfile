@@ -56,8 +56,8 @@ FROM base as final
 
 COPY --from=devel --chown=nginx:nginx /var/www /var/www
 COPY ./ /
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /entry.sh
 
-ENTRYPOINT [ "/sbin/tini", "--", "/entrypoint.sh" ]
+ENTRYPOINT [ "/sbin/tini", "--", "/entry.sh" ]
 
 CMD [ "p:start" ]
