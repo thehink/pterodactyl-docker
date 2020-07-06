@@ -20,10 +20,6 @@ RUN \
 # Expose HTTP and HTTPS ports
 EXPOSE 80 443
 
-COPY config/trustedproxy.php ./config/trustedproxy.php
-
-
-
 # Build phase of the container
 # This is where composer is added and pterodactyl properly setup
 FROM base as devel
@@ -57,6 +53,8 @@ FROM base as final
 COPY --from=devel --chown=nginx:nginx /var/www /var/www
 COPY ./ /
 RUN chmod +x /entry.sh
+
+COPY ./config/trustedproxy.php ./config
 
 ENTRYPOINT [ "/sbin/tini", "--", "/entry.sh" ]
 
