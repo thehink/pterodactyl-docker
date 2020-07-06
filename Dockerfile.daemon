@@ -17,6 +17,7 @@ RUN curl -L -o /tmp/docker-$DOCKER_VERSION.tgz https://download.docker.com/linux
     && mv /tmp/docker/docker /usr/bin \
     && rm -rf /tmp/docker-$DOCKER_VERSION /tmp/docker
 
+
 # VOLUME /var/run/docker.sock
 
 WORKDIR /srv/daemon
@@ -31,5 +32,7 @@ RUN \
  && apk del curl make gcc g++ python3 gnupg \
  && rm -rf /root/.npm /root/.node-gyp /root/.gnupg \
  /var/cache/apk/* /tmp/*
+
+RUN mkdir -p /home/debian/pterodactyl/daemon-data
 
 CMD ["npm", "start"]
