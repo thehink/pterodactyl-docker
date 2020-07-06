@@ -1,0 +1,7 @@
+*.eot binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# 2020
+* text=auto eol=lf

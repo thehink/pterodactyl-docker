@@ -12,4 +12,4 @@ EXPOSE 2022
 # Default Work Directory
 WORKDIR /var/lib/pterodactyl
 
-CMD [ "/usr/local/bin/wings", "--config", "./config.yml" ]
+CMD [ "/usr/local/bin/wings", "--config", "./config/config.yml" ]
