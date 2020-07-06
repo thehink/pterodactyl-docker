@@ -1,7 +1,0 @@
-FROM ccarney16/pterodactyl-panel:v0.7.17
-
-# RUN php artisan vendor:publish --provider="Fideloper\Proxy\TrustedProxyServiceProvider"
-
-COPY config/trustedproxy.php config
-
-CMD [ "p:start" ]
