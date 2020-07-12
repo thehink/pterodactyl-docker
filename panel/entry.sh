@@ -96,6 +96,15 @@ function startServer {
         cat /etc/nginx/templates/http.conf > /etc/nginx/conf.d/default.conf
     fi
 
+    # Determine if workers should be enabled or not
+    if [ "${DISABLE_WORKERS}" != "true" ]; then
+        echo "Enabling cron and queue worker"
+        /usr/sbin/crond -f -l 0 &
+        php /var/www/html/artisan queue:work database --queue=high,standard,low --sleep=3 --tries=3 &
+    else 
+        echo "[Warning] Disabling Workers (pteroq & cron); It is recommended to keep these enabled unless you know what you are doing."
+    fi
+
     /usr/sbin/php-fpm7 --nodaemonize -c /etc/php7 &
 
     exec /usr/sbin/nginx -g "daemon off;"
@@ -104,6 +113,8 @@ function startServer {
 ## Start ##
 
 init
+
+echo "Starting server"
 
 case "${1}" in
     p:start)
