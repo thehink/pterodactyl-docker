@@ -29,8 +29,8 @@ RUN \
 
 RUN \
     curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v${PANEL_VERSION}/panel.tar.gz \
-    && tar --strip-components=1 -xzvf panel.tar.gz \
-    && rm panel.tar.gz \
+    && tar --strip-components=0 -xzvf panel.tar.gz \
+    && rm panel.tar.gz \ 
     && chmod -R 755 storage/* bootstrap/cache \
     && find storage -type d > .storage.tmpl \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
