@@ -1,6 +1,6 @@
 FROM alpine:edge as base
 
-ARG VERSION=1.0.0-beta.5
+ARG VERSION=1.0.0-beta.6
 ARG ENABLE_MOBILE=false
 
 LABEL MAINTAINER="Cameron Carney <ccarney16@live.com>"
