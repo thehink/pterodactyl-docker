@@ -69,16 +69,16 @@ function startServer {
         echo "Setup: Generating key..."
         sleep 1
         php artisan key:generate --force --no-interaction
-
-        echo ""
-        echo "Setup: Creating & seeding database..."
-        sleep 1
-        php artisan migrate --force
-        php artisan db:seed --force
-
-
+        
         echo "--Pterodactyl Setup completed!--"
     fi
+
+    # Always run migrate
+    echo ""
+    echo "Setup: Creating & seeding database..."
+    sleep 1
+    php artisan migrate --force
+    php artisan db:seed --force
 
     # Allows Users to give MySQL/cache sometime to start up.
     if [[ "${STARTUP_TIMEOUT}" -gt "0" ]]; then
