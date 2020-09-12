@@ -21,5 +21,6 @@ RUN \
 
 # # Default Work Directory
 WORKDIR /var/lib/pterodactyl
+COPY ./templates templates
 
 CMD [ "/usr/local/bin/wings", "--config", "./config/config.yml" ]
