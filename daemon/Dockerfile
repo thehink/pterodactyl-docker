@@ -4,7 +4,7 @@
 
 FROM golang:1.14-alpine
 
-ENV DAEMON_VERSION=1.0.0-beta.9
+ENV DAEMON_VERSION=1.0.0-rc.5
 
 WORKDIR /go/wings/
 RUN wget -O ./wings.tar.gz https://github.com/pterodactyl/wings/archive/release/v${DAEMON_VERSION}.tar.gz \
